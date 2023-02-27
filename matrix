@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matrix-style letters and numbers in green</title>
+	<style>
+		body {
+			background-color: black;
+			margin: 0;
+			overflow: hidden;
+		}
+		.stream {
+			font-family: monospace;
+			font-size: 14px;
+			color: rgb(16, 248, 16);
+			position: absolute;
+			animation: stream 480s linear infinite;
+			transform-origin: 50% 50%;
+			white-space: nowrap;
+		}
+		@keyframes stream {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(100%);
+			}
+		}
+	</style>
+</head>
+<body>
+	<script>
+		var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		var windowHeight = window.innerHeight;
+		var windowWidth = window.innerWidth;
+		var numStreams = Math.floor(windowWidth / 20);
+		var streams = [];
+		for (var i = 0; i < numStreams; i++) {
+			var stream = document.createElement('div');
+			stream.className = 'stream';
+			stream.style.left = i * 20 + 'px';
+			document.body.appendChild(stream);
+			streams.push(stream);
+		}
+		function updateStreams() {
+			for (var i = 0; i < numStreams; i++) {
+				var stream = streams[i];
+				var streamText = '';
+				for (var j = 0; j < windowHeight / 20; j++) {
+					var charIndex = Math.floor(Math.random() * chars.length);
+					streamText += chars.charAt(charIndex) + ' ';
+				}
+				stream.textContent = streamText;
+				stream.style.top = Math.floor(Math.random() * windowHeight) + 'px';
+			}
+		}
+		setInterval(updateStreams, 100);
+	</script>
+</body>
+</html>
