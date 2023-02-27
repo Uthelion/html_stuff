@@ -10,10 +10,10 @@
 		}
 		.stream {
 			font-family: monospace;
-			font-size: 14px;
-			color: rgb(16, 248, 16);
+			font-size: 20px;
+			color: rgb(16, 209, 16);
 			position: absolute;
-			animation: stream 480s linear infinite;
+			animation: stream 16s linear infinite;
 			transform-origin: 50% 50%;
 			white-space: nowrap;
 		}
@@ -29,7 +29,7 @@
 </head>
 <body>
 	<script>
-		var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		var windowHeight = window.innerHeight;
 		var windowWidth = window.innerWidth;
 		var numStreams = Math.floor(windowWidth / 20);
@@ -53,7 +53,7 @@
 				stream.style.top = Math.floor(Math.random() * windowHeight) + 'px';
 			}
 		}
-		setInterval(updateStreams, 100);
+		setInterval(updateStreams, 160); /* Change the interval time to 160ms */
 	</script>
 </body>
 </html>
